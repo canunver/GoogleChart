@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="tr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+		<style>
+			body, html {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+
+			#infoSection {
+				padding: 20px;
+				background-color: #f8f9fa;
+				flex-shrink: 0;
+			}
+			
+			#mainContent {
+				display: flex;
+				flex-direction: column;
+				height: calc(100% - 140px); /* 80px, infoSection'ın yüksekliği */
+				flex: 1;
+			}
+			
+			#chartSection {
+				display: flex;
+				flex: 1;
+				overflow: hidden;
+			}
+			
+			#chartList {
+				height: 100%;
+				overflow-y: auto;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			
+			#chartList .list-group-item {
+				border: none;
+				border-bottom: 1px solid #ddd;
+			}
+			
+			#chartContainer {
+				flex: 1;
+				padding: 20px;
+				height: 100%;
+			}
+
+			#chartToolbar {
+			  margin-bottom: 15px;
+			}
+			
+			/* Seçili öğe için özel stil */
+			.list-group-item.active {
+				background-color: #007bff;
+				color: white;
+				font-weight: bold;
+			}
+
+			/* Fare ile üzerine gelindiğinde uygulanacak stil */
+			.list-group-item:hover {
+				color: red;
+				cursor: pointer;
+			}
+		</style>
+		<script type="text/javascript">
+			<!-- google.charts.load('current', {'packages':['corechart']}); -->
+			//google.charts.setOnLoadCallback(drawChart);
+
+			<!-- function drawChart() { -->
+				<!-- data = google.visualization.arrayToDataTable([ -->
+					
+				<!-- ]); -->
+				<!-- var view = new google.visualization.DataView(data); -->
+				<!-- view.setColumns([0, 1, 2, { -->
+					<!-- calc: function(dt, row) { -->
+						<!-- return dt.getValue(row, 1) - dt.getValue(row, 2); -->
+					<!-- }, -->
+					<!-- type: 'number', -->
+					<!-- label: 'Fark' -->
+				<!-- }]); -->
+				<!-- var options = { -->
+					<!-- title: 'Şirketin Yıllık Gelir ve Giderleri ve Fark', -->
+					<!-- seriesType: 'line', -->
+					<!-- series: { -->
+						<!-- 2: { -->
+							<!-- type: 'bars', -->
+							<!-- targetAxisIndex: 1 -->
+						<!-- } -->
+					<!-- }, -->
+					<!-- vAxes: { -->
+						<!-- 0: { -->
+							<!-- title: 'Gelir ve Gider', -->
+							<!-- logScale: true -->
+						<!-- }, -->
+						<!-- 1: { -->
+							<!-- title: 'Fark' -->
+						<!-- } -->
+					<!-- }, -->
+					<!-- hAxis: { -->
+						<!-- title: 'Yıllar', -->
+						<!-- format: '####' -->
+					<!-- } -->
+				<!-- }; -->
+
+				<!-- var chart = new google.visualization.ComboChart(document.getElementById('curve_chart')); -->
+				<!-- chart.draw(view, options); -->
+			<!-- } -->
+
+
+		</script>
+	</head>
+	<body>
+		<div id="infoSection" class="container-fluid">
+			<h1>Yıllara Göre Bütçe Grafikleri</h1>
+			<p>Yıllara göre bütçe gerçekleşmelerini görüntülüyebilirsiniz</p>
+		</div>
+
+		<div id="mainContent" class="container-fluid">
+			<div id="chartSection">
+				<div class="col-md-3">
+					<h3>Grafik Listesi</h3>
+					<ul class="list-group" id="chartList">
+						<li class="list-group-item" data-chart="chart1">Grafik 1</li>
+						<li class="list-group-item" data-chart="chart2">Grafik 2</li>
+						<li class="list-group-item" data-chart="chart1">Grafik 3</li>
+						<li class="list-group-item" data-chart="chart2">Grafik 4</li>
+						<li class="list-group-item" data-chart="chart1">Grafik 5</li>
+						<li class="list-group-item" data-chart="chart2">Grafik 6</li>
+						<li class="list-group-item" data-chart="chart1">Grafik 7</li>
+						<li class="list-group-item" data-chart="chart2">Grafik 8</li>
+						<li class="list-group-item" data-chart="chart1">Grafik 9</li>
+						<li class="list-group-item" data-chart="chart2">Grafik 10</li>
+						<li class="list-group-item" data-chart="chart1">Grafik 11</li>
+						<li class="list-group-item" data-chart="chart2">Grafik 12</li>
+						<li class="list-group-item" data-chart="chart1">Grafik 13</li>
+						<li class="list-group-item" data-chart="chart2">Grafik 14</li>
+						<li class="list-group-item" data-chart="chart1">Grafik 15</li>
+						<li class="list-group-item" data-chart="chart2">Grafik 16</li>
+						<li class="list-group-item" data-chart="chart1">Grafik 17</li>
+						<li class="list-group-item" data-chart="chart2">Grafik 18</li>
+						<li class="list-group-item" data-chart="chart1">Grafik 19</li>
+						<li class="list-group-item" data-chart="chart2">Grafik 20</li>
+						<li class="list-group-item" data-chart="chart1">Grafik 21</li>
+						<li class="list-group-item" data-chart="chart2">Grafik 22</li>
+						<li class="list-group-item" data-chart="chart1">Grafik 23</li>
+						<li class="list-group-item" data-chart="chart2">Grafik 24</li>
+						<li class="list-group-item" data-chart="chart1">Grafik 25</li>
+						<li class="list-group-item" data-chart="chart2">Grafik 26</li>
+						<li class="list-group-item" data-chart="chart1">Grafik 27</li>
+						<li class="list-group-item" data-chart="chart2">Grafik 28</li>
+						<li class="list-group-item" data-chart="chart1">Grafik 29</li>
+						<li class="list-group-item" data-chart="chart2">Grafik 30</li>
+						<li class="list-group-item" data-chart="chart1">Grafik 31</li>
+						<li class="list-group-item" data-chart="chart2">Grafik 32</li>
+						<li class="list-group-item" data-chart="chart1">Grafik 33</li>
+						<li class="list-group-item" data-chart="chart2">Grafik 34</li>
+						<li class="list-group-item" data-chart="chart1">Grafik 35</li>
+						<li class="list-group-item" data-chart="chart2">Grafik 36</li>
+					</ul>
+				</div>
+				<div class="col-md-9">
+					<div id="chartToolbar">
+						<button class="btn btn-primary" id="euroBtn">Euro</button>
+						<button class="btn btn-primary" id="dollarBtn">Dollar</button>
+						<button class="btn btn-primary" id="inflationBtn">Enflasyon</button>
+						<button class="btn btn-primary" id="exportBtn" onclick="exportChart()">Export</button>
+						<button class="btn btn-primary" id="zoomInBtn">Zoom In</button>
+						<button class="btn btn-primary" id="zoomOutBtn">Zoom Out</button>
+					</div>
+					<div id="chartContainer"></div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			google.charts.load('current', {'packages':['corechart']});
+			google.charts.setOnLoadCallback(drawChart);
+
+			var currentView = {
+				start: 1970,
+				end: 2024
+			};
+
+			var chart;
+			var data;
+			var options;
+			function exportChart() {
+				var imgUri = chart.getImageURI();
+				var link = document.createElement('a');
+				link.href = imgUri;
+				link.download = 'chart.png';
+				document.body.appendChild(link);
+				link.click();
+				document.body.removeChild(link);
+			}
+
+			function drawChart(chartType = 'chart1') {
+				data = google.visualization.arrayToDataTable([
+					['Year', 'Sales', 'Expenses'],
+					[1970, 1200, 1032], 
+					[1971, 1260, 1197], 
+					[1972, 1436, 1191], 
+					[1973, 1407, 1336], 
+					[1974, 1603, 1603], 
+					[1975, 1795, 1795], 
+					[1976, 1884, 1733], 
+					[1977, 2053, 1929], 
+					[1978, 2176, 1936], 
+					[1979, 2306, 2329], 
+					[1980, 2236, 2146], 
+					[1981, 2370, 2156], 
+					[1982, 2322, 2182], 
+					[1983, 2577, 2164], 
+					[1984, 2937, 2584], 
+					[1985, 2848, 2876], 
+					[1986, 3047, 2955], 
+					[1987, 3199, 2687], 
+					[1988, 3135, 3103], 
+					[1989, 3573, 3608], 
+					[1990, 3537, 3289], 
+					[1991, 3996, 3596], 
+					[1992, 4555, 4145], 
+					[1993, 4964, 4964], 
+					[1994, 5410, 5464], 
+					[1995, 5626, 5626], 
+					[1996, 6469, 5886], 
+					[1997, 6727, 6390], 
+					[1998, 7332, 6158], 
+					[1999, 7405, 7182], 
+					[2000, 8219, 7972], 
+					[2001, 8219, 8054], 
+					[2002, 8794, 8442], 
+					[2003, 9233, 8125], 
+					[2004, 8863, 7622], 
+					[2005, 9837, 9738], 
+					[2006, 11312, 11085], 
+					[2007, 11538, 10268], 
+					[2008, 12691, 11929], 
+					[2009, 13833, 13003], 
+					[2010, 13279, 12880], 
+					[2011, 14341, 13623], 
+					[2012, 14341, 12906], 
+					[2013, 14197, 13771], 
+					[2014, 14338, 14624], 
+					[2015, 13764, 13626], 
+					[2016, 15553, 14153], 
+					[2017, 17730, 16134], 
+					[2018, 18616, 15451], 
+					[2019, 20849, 21057], 
+					[2020, 22308, 22308], 
+					[2021, 22308, 20300], 
+					[2022, 22531, 22756], 
+					[2023, 24108, 23866], 
+					[2024, 27724, 28001], 
+				]);
+
+				options = {
+					title: 'Grafik Başlığı',
+					hAxis: {
+						title: 'Yıl',
+						viewWindow: {min: 1970, max: 2024}
+					},
+					vAxis: {title: 'Değer'},
+					explorer: {
+						actions: ['dragToZoom', 'dragToPan', 'rightClickToReset'], //
+						axis: 'horizontal',
+						keepInBounds: true,
+						maxZoomIn: 4
+					}
+				};
+
+				if (chartType === 'chart1') {
+					chart = new google.visualization.LineChart(document.getElementById('chartContainer'));
+				} else if (chartType === 'chart2') {
+					chart = new google.visualization.ColumnChart(document.getElementById('chartContainer'));
+				}
+
+				chart.draw(data, options);
+			}
+
+			document.getElementById('chartList').addEventListener('click', function(e) {
+				if (e.target && e.target.nodeName === 'LI') {
+					// Tüm list öğelerinden 'active' sınıfını kaldır
+					var items = document.querySelectorAll('#chartList .list-group-item');
+					items.forEach(function(item) {
+						item.classList.remove('active');
+					});
+
+					// Tıklanan öğeye 'active' sınıfını ekle
+					e.target.classList.add('active');
+
+					// Grafiği çiz
+					drawChart(e.target.getAttribute('data-chart'));
+				}
+			});
+
+			function getViewWindow() {
+				var layout = chart.getChartLayoutInterface();
+				var chartArea = layout.getChartAreaBoundingBox();
+
+				var min = layout.getHAxisValue(chartArea.left);
+				var max = layout.getHAxisValue(chartArea.left + chartArea.width);
+
+				return { min: min, max: max };
+			}
+
+			function scrollChart(direction) {
+				var viewWindow = getViewWindow();
+				<!-- var min = viewWindow.min; -->
+				<!-- var max = viewWindow.max; -->
+				<!-- var range = max - min; -->
+				<!-- var step = range / 10; // Adım büyüklüğü -->
+
+				<!-- if (direction === 'left') { -->
+					<!-- options.hAxis.viewWindow.min = min - step; -->
+					<!-- options.hAxis.viewWindow.max = max - step; -->
+				<!-- } else if (direction === 'right') { -->
+					<!-- options.hAxis.viewWindow.min = min + step; -->
+					<!-- options.hAxis.viewWindow.max = max + step; -->
+				<!-- } -->
+				<!-- chart.draw(data, options); -->
+			}
+
+
+			document.getElementById('zoomInBtn').addEventListener('click', function() {
+				scrollChart('left');
+			});
+
+			document.getElementById('zoomOutBtn').addEventListener('click', function() {
+				scrollChart('right');
+			});
+
+		
+		</script>
+	</body>
+</html>
